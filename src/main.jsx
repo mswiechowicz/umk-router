@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
-  BrowserRouter,
+  HashRouter,
   Link,
   NavLink,
   Route,
@@ -23,7 +23,7 @@ function Item() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <div className='bg-umk-300 hover:bg-umk-400 dark:bg-red-500'>
         <header className='flex gap-5 justify-center mb-4'>
           <NavLink to={'/'}>Home</NavLink>
@@ -34,12 +34,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </header>
         <Routes>
           <Route path='/' element={<div>home</div>} />
-          <Route path='/about' element={<div>Tajny klucz: {import.meta.env.VITE_TAJNY}</div>} />
+          <Route
+            path='/about'
+            element={<div>Tajny klucz: {import.meta.env.VITE_TAJNY}</div>}
+          />
           <Route path='/contact' element={<div>contact</div>} />
           <Route path='/item/:itemId' element={<Item />} />
           <Route path='*' element={<div>404</div>} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
 );
